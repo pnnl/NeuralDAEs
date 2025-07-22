@@ -1,5 +1,5 @@
 """
-System ID for networked differential-algebraic dyanmical system.
+System ID for networked differential-algebraic dynamical system.
 
 Tank-Manifold Property Inference Example
 """
@@ -32,13 +32,17 @@ from neuromancer.loggers import BasicLogger
 # Set device:
 device = 'cpu'
 
+"""
+Dataset generation
+"""
+
 # Problem-specific constants:
 area_data = np.loadtxt('area.dat')
 nx = 4
 nu = 1
 dt = 1.0
 
-# %%
+# add noise
 def add_snr(data,db):
 
     snr = 10**(db/10)
@@ -51,6 +55,7 @@ def add_snr(data,db):
         data[:,i] += 1.0*np.random.normal(0,std_n,len(data[:,0]))
     return data
 
+# generate data loaders with noisy data
 def train_noise(snr,nEpochs):
     torch.manual_seed(0)
     # Load data from text file:
@@ -149,6 +154,10 @@ def train_noise(snr,nEpochs):
     fx_int = integrators.EulerDAE(model_ode,algebra=model_algebra,h=1.0)
     dynamics_model = System([Node(fx_int,['xn'],['xn'])])
 
+    """
+    Define variables and loss function terms
+    """
+
     x = variable("X")
     xhat = variable("xn")[:, :-1, :]
     reference_loss = ((xhat[:,:,[2,3]] == x[:,:,[2,3]])^2)
@@ -165,6 +174,10 @@ def train_noise(snr,nEpochs):
     loss = PenaltyLoss(objectives, constraints)
     # construct constrained optimization problem
     problem = Problem([dynamics_model], loss)
+
+    """
+    Define trainer and train the model
+    """
 
     optimizer = torch.optim.Adam(problem.parameters(), lr=0.001)
     logger = BasicLogger(args=None, savedir='test', verbosity=1,
@@ -314,3 +327,7 @@ for db in SNRDB:
     plt.legend()
     plt.savefig('extrap_flows_'+str(db)+'.png')
     plt.show()
+
+
+
+

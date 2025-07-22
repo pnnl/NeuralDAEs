@@ -1,5 +1,5 @@
 """
-System ID for networked differential-algebraic dyanmical system.
+System ID for networked differential-algebraic dynamical system.
 
 Tank Network Modeling Example
 """
