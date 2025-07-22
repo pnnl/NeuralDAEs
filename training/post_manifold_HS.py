@@ -1,32 +1,34 @@
 # %%
-"""|
-System ID for networked differential-algebraic dyanmical system. Toy problem for testing new class designs.
 """
+Post processing and visualization of the trained network.
+
+System ID for networked differential-algebraic dyanmical system.
+
+requires running: train_manifold.py
+"""
+import sys
+import os
+
+# Add the path to the local neuromancer source directory
+project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+local_src_path = os.path.join(project_root, 'neuromancer-dae', 'src')
+sys.path.insert(0, local_src_path)
+
 import numpy as np
 import matplotlib.pyplot as plt
 import torch
 import torch.nn as nn
-from torch.utils.data import DataLoader
-import os
 
 import neuromancer.slim as slim
-from neuromancer.modules import blocks, activations
+from neuromancer.modules import blocks
 from neuromancer.dynamics import integrators, ode, physics
-from neuromancer.trainer import Trainer
 from neuromancer.problem import Problem
-from neuromancer.dataset import DictDataset
 from neuromancer.loss import PenaltyLoss
-from neuromancer.constraint import variable, Objective
+from neuromancer.constraint import variable
 from neuromancer.system import Node, System
-from neuromancer.loggers import BasicLogger
-
-from collections import OrderedDict
-from abc import ABC, abstractmethod
 
 from sklearn.metrics import mean_squared_error
 
-import seaborn as sns
-sns.set_context("paper", font_scale=2.8,rc={"lines.linewidth": 2})
 # Set device:
 device = 'cpu'
 

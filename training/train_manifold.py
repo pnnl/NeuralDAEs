@@ -1,13 +1,22 @@
-# %%
-"""|
-System ID for networked differential-algebraic dyanmical system. Toy problem for testing new class designs.
 """
+System ID for networked differential-algebraic dyanmical system.
+
+Tank-Manifold Property Inference Example
+"""
+import sys
+import os
+
+# Add the path to the local neuromancer source directory
+project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+local_src_path = os.path.join(project_root, 'neuromancer-dae', 'src')
+sys.path.insert(0, local_src_path)
+
+
 import numpy as np
 import matplotlib.pyplot as plt
 import torch
 import torch.nn as nn
 from torch.utils.data import DataLoader
-import os
 
 import neuromancer.slim as slim
 from neuromancer.modules import blocks, activations
@@ -19,9 +28,6 @@ from neuromancer.loss import PenaltyLoss
 from neuromancer.constraint import variable, Objective
 from neuromancer.system import Node, System
 from neuromancer.loggers import BasicLogger
-
-from collections import OrderedDict
-from abc import ABC, abstractmethod
 
 # Set device:
 device = 'cpu'
@@ -308,5 +314,3 @@ for db in SNRDB:
     plt.legend()
     plt.savefig('extrap_flows_'+str(db)+'.png')
     plt.show()
-
-# %%

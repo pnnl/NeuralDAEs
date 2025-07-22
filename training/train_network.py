@@ -1,7 +1,17 @@
-# %%
-"""|
-System ID for networked differential-algebraic dyanmical system. Toy problem for testing new class designs.
 """
+System ID for networked differential-algebraic dyanmical system.
+
+Tank Network Modeling Example
+"""
+
+import sys
+import os
+
+# Add the path to the local neuromancer source directory
+project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+local_src_path = os.path.join(project_root, 'neuromancer-dae', 'src')
+sys.path.insert(0, local_src_path)
+
 import numpy as np
 import matplotlib.pyplot as plt
 import torch
@@ -19,9 +29,6 @@ from neuromancer.loss import PenaltyLoss
 from neuromancer.constraint import variable, Objective
 from neuromancer.system import Node, System
 from neuromancer.loggers import BasicLogger
-
-from collections import OrderedDict
-from abc import ABC, abstractmethod
 
 # Set device:
 device = 'cpu'
@@ -220,5 +227,3 @@ for db in SNRDB:
     plt.ylabel("Height")
     plt.legend()
     plt.show()
-
-# %%
