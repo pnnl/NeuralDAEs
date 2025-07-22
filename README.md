@@ -1,7 +1,7 @@
 # Neural Differential Algebraic Equations
 
 
-This is the repository for the paper titled **[Neural Differential Algebraic Equations](https://arxiv.org/abs/2403.12938)** by James Koch, Madelyn Shapiro, Himanshu Sharma, Draguna Vrabie, and Jan Drgona.
+This is the repository for the paper titled **[Learning Neural Differential Algebraic Equations via Operator Splitting](https://arxiv.org/abs/2403.12938)** by James Koch, Madelyn Shapiro, Himanshu Sharma, Draguna Vrabie, and Jan Drgona.
 
 Neural Differential Algebraic Equations (Neural DAEs) are an extension of the canonical neural timestepper for systems with algebraic constraints. 
 Inspired by fractional-step methods, this work leverages sequential sub-tasks to provide updates for algebraic states and differential states.
