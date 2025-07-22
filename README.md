@@ -7,7 +7,7 @@ Neural Differential Algebraic Equations (Neural DAEs) are an extension of the ca
 Inspired by fractional-step methods, this work leverages sequential sub-tasks to provide updates for algebraic states and differential states.
 
 <p align="center">
-  <img src="fig_01.png" width="500">  
+  <img src="./figs/fig_01.png" width="500">  
 </p>
 
 
