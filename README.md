@@ -11,8 +11,10 @@ Inspired by fractional-step methods, this work leverages sequential sub-tasks to
 </p>
 
 
-**Simple tutorial example in Neuromancer** 
-+ [Tank-Manifold example using basic Neuromancer abstractions](https://github.com/pnnl/NeuralDAEs/blob/master/training/train_manifold_simple.py)
+**Simple tutorial example in Neuromancer**
++ <a target="_blank" href="https://colab.research.google.com/github.com/pnnl/NeuralDAEs/blob/master/training/tank_dae_example.ipynb">
+  <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a>  Tank-Manifold example using basic Neuromancer abstractions
+
 
 **Training and visualization scripts needed for reproducing all paper results**
 + [Neuromancer 1.4 with custom modules for DAE integration](https://github.com/pnnl/NeuralDAEs/tree/master/neuromancer-dae)
